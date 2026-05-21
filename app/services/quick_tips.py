@@ -3,20 +3,65 @@ import random
 
 class QuickTips:
 
-    tips = [
-        "Drink a glass of water.",
-        "Take 5 deep breaths.",
-        "Stretch your shoulders and neck.",
-        "Step outside for fresh air.",
-        "Listen to calming music for 2 minutes.",
-        "Write down one positive thought.",
-        "Close your eyes and relax your muscles.",
-        "Take a short mindful walk."
-    ]
+    TIPS = {
+
+        "anxious": [
+            {
+                "category": "calming",
+                "tip": "Try box breathing for 60 seconds.",
+                "duration": "1 minute",
+                "difficulty": "easy"
+            },
+            {
+                "category": "mindfulness",
+                "tip": "Close your eyes and focus only on your breathing.",
+                "duration": "2 minutes",
+                "difficulty": "easy"
+            }
+        ],
+
+        "sad": [
+            {
+                "category": "uplifting",
+                "tip": "Write down one thing you're grateful for.",
+                "duration": "2 minutes",
+                "difficulty": "easy"
+            },
+            {
+                "category": "movement",
+                "tip": "Take a short walk outside.",
+                "duration": "5 minutes",
+                "difficulty": "medium"
+            }
+        ],
+
+        "stressed": [
+            {
+                "category": "relaxation",
+                "tip": "Relax your shoulders and jaw consciously.",
+                "duration": "1 minute",
+                "difficulty": "easy"
+            }
+        ],
+
+        "neutral": [
+            {
+                "category": "wellness",
+                "tip": "Drink a glass of water slowly.",
+                "duration": "1 minute",
+                "difficulty": "easy"
+            }
+        ]
+    }
 
     @staticmethod
-    def get_tip():
+    def get_tip(mood: str):
 
-        return random.choice(
-            QuickTips.tips
+        mood = mood.lower()
+
+        tips = QuickTips.TIPS.get(
+            mood,
+            QuickTips.TIPS[mood] if mood in QuickTips.TIPS else QuickTips.TIPS["neutral"]
         )
+
+        return random.choice(tips)

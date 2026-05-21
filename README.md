@@ -92,6 +92,10 @@ AI provider abstraction (Gemini/Ollama)
 | GET    | `/tips/quick`        | Get quick wellness tips            |
 | GET    | `/history/{user_id}` | Fetch user session history         |
 
+Enhanced API Design
+Endpoint
+GET /tips/quick?mood=anxious&energy=low
+
 Start PostgreSQL
 psql postgres
 

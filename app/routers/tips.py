@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
 
 from app.models.schemas import TipResponse
 
@@ -10,8 +10,14 @@ router = APIRouter(
 )
 
 @router.get("/quick", response_model=TipResponse)
-async def get_quick_tip():
+async def get_quick_tip(mood: str = Query(
+        default="neutral",
+        description="User emotional state"
+    )):
+    
+    result = QuickTips.get_tip(mood)
 
     return {
-        "tip": QuickTips.get_tip()
+        "mood": mood,
+        **result
     }

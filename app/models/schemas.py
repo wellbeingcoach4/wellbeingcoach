@@ -10,4 +10,8 @@ class SessionResponse(BaseModel):
 
 
 class TipResponse(BaseModel):
+    mood: str
+    category: str
     tip: str
+    duration: str
+    difficulty: str

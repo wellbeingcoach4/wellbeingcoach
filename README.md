@@ -110,3 +110,11 @@ CREATE TABLE wellness_sessions (
     mood VARCHAR(100),
     session_text VARCHAR(1000)
 );
+
+CREATE TABLE mood_analysis (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id VARCHAR(50),
+    user_text VARCHAR(1000),
+    detected_mood VARCHAR(100),
+    confidence FLOAT(10)
+);

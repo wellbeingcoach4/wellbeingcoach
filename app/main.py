@@ -18,6 +18,12 @@ from app.routers import (
     history
 )
 
+from app.data.database import Base, engine
+from app.data.query_model import (
+    MoodAnalysis,
+    WellnessSession
+)
+
 app = FastAPI(
     title=settings.APP_NAME
 )

@@ -108,7 +108,8 @@ CREATE TABLE wellness_sessions (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     user_id VARCHAR(50),
     mood VARCHAR(100),
-    session_text VARCHAR(1000)
+    session_text VARCHAR(1000),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE mood_analysis (
@@ -116,5 +117,6 @@ CREATE TABLE mood_analysis (
     user_id VARCHAR(50),
     user_text VARCHAR(1000),
     detected_mood VARCHAR(100),
-    confidence FLOAT(10)
+    confidence FLOAT(10),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

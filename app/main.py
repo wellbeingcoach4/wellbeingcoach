@@ -28,6 +28,8 @@ app = FastAPI(
     title=settings.APP_NAME
 )
 
+Base.metadata.create_all(bind=engine)
+
 app.state.limiter = limiter
 
 app.add_middleware(

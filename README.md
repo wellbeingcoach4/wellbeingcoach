@@ -91,10 +91,8 @@ AI provider abstraction (Gemini/Ollama)
 | POST   | `/session/generate`  | Generate 5-minute wellness session |
 | GET    | `/tips/quick`        | Get quick wellness tips            |
 | GET    | `/history/{user_id}` | Fetch user session history         |
+| GET    | `/tips/quick         | Get tips based on mood             |
 
-Enhanced API Design
-Endpoint
-GET /tips/quick?mood=anxious&energy=low
 
 Start PostgreSQL
 psql postgres

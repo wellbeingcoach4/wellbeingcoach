@@ -10,7 +10,7 @@ router = APIRouter(
 )
 
 @router.get("/quick", response_model=TipResponse)
-async def get_tip():
+async def get_quick_tip():
 
     return {
         "tip": QuickTips.get_tip()

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.query_model import Base, LLMQuery
+from query_model import Base, LLMQuery
 
 load_dotenv()
 

@@ -5,9 +5,7 @@ from __future__ import annotations
 import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-from query_model import Base, LLMQuery
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 load_dotenv()
 
@@ -19,14 +17,12 @@ engine = create_engine(DATABASE_URL, future=True)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 
 # Ensure the required table exists before inserting records.
-Base.metadata.create_all(bind=engine)
+Base = declarative_base()
 
+def get_db():
+    db = SessionLocal()
 
-def save_llm_query(user_query: str, llm_response: str) -> LLMQuery:
-    """Save a user query and model response to PostgreSQL."""
-    with SessionLocal() as session:
-        record = LLMQuery(user_query=user_query, llm_response=llm_response)
-        session.add(record)
-        session.commit()
-        session.refresh(record)
-        return record
+    try:
+        yield db
+    finally:
+        db.close()

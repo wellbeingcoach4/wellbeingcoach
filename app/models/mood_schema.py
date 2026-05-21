@@ -1,13 +1,10 @@
 from pydantic import BaseModel
-from typing import Optional
-
 
 class MoodRequest(BaseModel):
-    mood: str
-    message: str
-    provider: Optional[str] = "gemini"
+    user_id: str
+    text: str
 
 
 class MoodResponse(BaseModel):
     mood: str
-    recommendation: str
+    confidence: float

@@ -1,14 +1,13 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
-class PromptRequest(BaseModel):
-    prompt: str = Field(
-        ...,
-        json_schema_extra={"example": "Explain cloud computing"}
-    )
+class SessionRequest(BaseModel):
+    user_id: str
+    mood: str
 
-class ExplanationResponse(BaseModel):
-    response: str
-    source: str
 
-class ErrorResponse(BaseModel):
-    detail: str
+class SessionResponse(BaseModel):
+    session: str
+
+
+class TipResponse(BaseModel):
+    tip: str

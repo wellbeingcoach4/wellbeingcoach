@@ -24,51 +24,98 @@ WELLBEINGCOACH
 
 WELLBEINGCOACH/
 │
+├── .env
+├── requirements.txt
+├── README.md
+├── uv.lock
+│
 ├── app/
+│   ├── __init__.py
 │   ├── main.py
 │   │
 │   ├── core/
+│   │   ├── __init__.py
 │   │   ├── config.py
-│   │   └── constants.py
+│   │  
 │   │
 │   ├── data/
 │   │   ├── __init__.py
 │   │   ├── database.py
+│   │   ├── init_db.py
 │   │   └── query_model.py
 │   │
-│   ├── exceptions/
-│   │   └── handlers.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── mood_schema.py
+│   │   ├── tip_schema.py
+|   |   |── wellness_schema.py
+│   │   └── recommendation_schema.py
+│   │
+│   ├── routers/
+│   │   ├── __init__.py
+│   │   ├── mood.py
+│   │   ├── session.py
+│   │   ├── tips.py
+│   │   ├── history.py
+│   │   ├── recommendation.py
+│   │   ├── behavior.py
+│   │   └── personalization.py
+│   │
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── mood_classifier.py
+│   │   ├── mood_manager.py
+│   │   ├── session_generator.py
+│   │   ├── history_manager.py
+│   │   ├── quick_tips.py
+│   │   ├── tip_manager.py
+│   │   ├── personalization_service.py
+│   │   └── validators.py
 │   │
 │   ├── llm/
+│   │   ├── __init__.py
 │   │   ├── cloud_service.py
 │   │   └── local_service.py
 │   │
+│   ├── behavior/
+│   │   ├── __init__.py
+│   │   ├── behavioral_memory.py
+│   │   ├── analytics_engine.py
+│   │   └── pattern_detector.py
+│   │
+│   ├── recommendation/
+│   │   ├── __init__.py
+│   │   ├── recommendation_engine.py
+│   │   └── user_profile.py
+│   │
 │   ├── middleware/
+│   │   ├── __init__.py
+│   │   ├── middleware.py
+│   │   ├── logging_middleware.py
 │   │   └── rate_limit.py
 │   │
-│   ├── models/
-│   │   ├── mood_schema.py
-│   │   └── schemas.py
+│   ├── exceptions/
+│   │   ├── __init__.py
+│   │   └── handlers.py
 │   │
-│   ├── routers/
-│   │   ├── history.py
-│   │   ├── mood.py
-│   │   ├── session.py
-│   │   └── tips.py
+│   ├── prompts/
+│   │   ├── tips_prompt.txt
+│   │   ├── session_prompt.txt
+│   │   └── personalization_prompt.txt
 │   │
-│   ├── services/
-│   │   ├── history_manager.py
-│   │   ├── mood_classifier.py
-│   │   ├── quick_tips.py
-│   │   ├── session_generator.py
-│   │   └── validators.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── helpers.py
+│   │   ├── logger.py
+│   │   └── time_utils.py
 │   │
 │   └── tests/
-│       └── test_routes.py
-│
-├── requirements.txt
-├── .env
-└── README.md
+│       ├── __init__.py
+│       ├── test_mood.py
+│       ├── test_session.py
+│       ├── test_tips.py
+│       ├── test_behavior.py
+│       └── test_personalization.py
 
 # FastAPI Starter Architecture
 

@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 
+from app.behavior.behavioral_memory import BehavioralMemory
 from app.data.query_model import MoodAnalysis
 
 
@@ -18,8 +19,13 @@ class MoodManager:
             user_id=user_id,
             user_text=user_text,
             detected_mood=detected_mood,
-            confidence=confidence
+            confidence=confidence,
+            time_of_day=BehavioralMemory.detect_time_of_day(),
+            stressor=BehavioralMemory.detect_stressor(
+                user_text
+            )
         )
+        
 
         db.add(mood_entry)
 

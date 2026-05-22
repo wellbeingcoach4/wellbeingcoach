@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, Float, DateTime, func
+from sqlalchemy import Boolean, Column, Integer, String, Text, Float, DateTime, func
 from app.data.database import Base
 
 class WellnessSession(Base):
@@ -11,6 +11,14 @@ class WellnessSession(Base):
     mood = Column(String, nullable=False)
 
     session_text = Column(Text, nullable=False)
+
+    session_type = Column(String)
+
+    successful = Column(Boolean, default=False)
+
+    feedback_score = Column(Integer)
+
+    duration_minutes = Column(Integer)
 
     created_at = Column(
         DateTime(timezone=True),
@@ -29,6 +37,10 @@ class MoodAnalysis(Base):
     detected_mood = Column(String, nullable=False)
 
     confidence = Column(Float, nullable=False)
+
+    stressor = Column(String)
+
+    time_of_day = Column(String)
 
     created_at = Column(
         DateTime(timezone=True),

@@ -102,15 +102,21 @@ CREATE TABLE wellness_sessions (
     user_id VARCHAR(50),
     mood VARCHAR(100),
     session_text VARCHAR(1000),
+    session_type VARCHAR(50),
+    successful BOOLEAN,
+    feedback_score INT,
+    duration_minutes INT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE mood_analysis (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id VARCHAR(50),
-    user_text VARCHAR(1000),
-    detected_mood VARCHAR(100),
-    confidence FLOAT(10),
+    user_id VARCHAR(50) NOT NULL,
+    user_text VARCHAR(1000) NOT NULL,
+    detected_mood VARCHAR(100) NOT NULL,
+    confidence FLOAT NOT NULL,
+    time_of_day VARCHAR(50),
+    stressor VARCHAR(255),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 

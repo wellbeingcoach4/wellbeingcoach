@@ -13,6 +13,7 @@ from app.exceptions.handlers import (
 
 from app.routers import (
     mood,
+    recommendation,
     session,
     tips,
     history
@@ -50,6 +51,7 @@ app.include_router(tips.router)
 
 app.include_router(history.router)
 
+app.include_router(recommendation.router)
 
 @app.get("/")
 async def root():

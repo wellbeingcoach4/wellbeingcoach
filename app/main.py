@@ -14,6 +14,7 @@ from app.exceptions.handlers import (
 from app.routers import (
     behavior,
     mood,
+    personalization,
     recommendation,
     session,
     tips,
@@ -55,6 +56,8 @@ app.include_router(history.router)
 app.include_router(recommendation.router)
 
 app.include_router(behavior.router)
+
+app.include_router(personalization.router)
 
 @app.get("/")
 async def root():

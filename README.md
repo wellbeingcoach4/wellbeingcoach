@@ -192,3 +192,40 @@ Mood Frequency	Detect emotional trends
 Time of Day	Identify vulnerable hours
 Repeated Stressors	Understand triggers
 Successful Sessions	Learn what helps users
+
+
+## LLM-Powered Personalization
+Now you’re entering the most important layer of your platform:
+
+This transforms your system from:
+
+rule-based wellness app
+
+into:
+
+context-aware AI behavioral coach
+
+The AI will now personalize recommendations using:
+
+mood history
+repeated stressors
+vulnerable time patterns
+successful sessions
+behavioral memory
+
+# Target Architecture
+User History
+    ↓
+Behavioral Memory
+    ↓
+Prompt Builder
+    ↓
+Gemini / Ollama
+    ↓
+Personalized AI Recommendation
+
+AI now understands:
+WHEN user struggles
+WHAT causes stress
+WHICH sessions help
+HOW to personalize guidance

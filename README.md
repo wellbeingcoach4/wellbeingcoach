@@ -146,3 +146,14 @@ LLM Provider Abstraction
 Gemini OR Ollama
 
 ollama run llama3.1:8b
+
+
+You now have enough historical data (MoodAnalysis, WellnessSession, TipHistory) to build a personalized recommendation engine.
+
+Let’s implement a clean recommendation system that:
+
+Learns from user mood history
+Detects repeated emotional patterns
+Suggests personalized wellness tips
+Recommends sessions dynamically
+Uses AI + behavioral history

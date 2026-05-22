@@ -18,7 +18,7 @@ router = APIRouter(
 
 
 @router.post(
-    "/analyze",
+    "/classify",
     response_model=MoodResponse
 )
 async def analyze_mood(

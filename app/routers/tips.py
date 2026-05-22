@@ -1,15 +1,10 @@
 from fastapi import APIRouter, Query
 from fastapi import Depends
 from sqlalchemy.orm import Session
-from app.models.schemas import TipResponse
-
-from app.routers import mood
+from app.models.tip_schema import TipResponse
 from app.services.quick_tips import QuickTips
-
 from app.services.tip_manager import TipManager
-
 from app.data.database import get_db
-
 from app.core.config import settings
 
 router = APIRouter(
@@ -35,10 +30,10 @@ async def get_quick_tip(
         provider=settings.LLM_PROVIDER
     )
 
-    return {
-        "mood": mood,
-        "user_id": user_id,
-        "category": result["category"],
-        "tip": result["tip"],
-        "provider": settings.LLM_PROVIDER
-    }
+    return TipResponse(
+        mood=mood,
+        user_id=user_id,
+        category=result["category"],
+        tip=result["tip"],
+        provider=settings.LLM_PROVIDER
+    )

@@ -12,8 +12,6 @@ router = APIRouter(
     tags=["History"]
 )
 
-router = APIRouter()
-
 @router.get("/{user_id}")
 async def get_history(
     user_id: str,

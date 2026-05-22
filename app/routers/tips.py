@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Query
 from fastapi import Depends
 from sqlalchemy.orm import Session
-from app.models.schemas import TipResponse
+from app.models.tip_schema import TipResponse
 
 from app.routers import mood
 from app.services.quick_tips import QuickTips

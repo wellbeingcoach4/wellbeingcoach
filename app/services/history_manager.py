@@ -12,21 +12,23 @@ class HistoryManager:
         session_text: str
     ):
 
-        session = WellnessSession(
+        record = WellnessSession(
             user_id=user_id,
             mood=mood,
             session_text=session_text
         )
 
-        db.add(session)
+        db.add(record)
         db.commit()
-        db.refresh(session)
+        db.refresh(record)
 
-        return session
+        return record
 
     @staticmethod
     def get_history(db: Session, user_id: str):
 
-        return db.query(WellnessSession).filter(
+        history = db.query(WellnessSession).filter(
             WellnessSession.user_id == user_id
         ).all()
+
+        return history

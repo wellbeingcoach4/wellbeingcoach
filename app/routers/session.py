@@ -4,9 +4,9 @@ from fastapi import Depends
 from sqlalchemy.orm import Session
 from app.data.database import get_db
 
-from app.models.schemas import (
-    SessionRequest,
-    SessionResponse
+from app.models.wellness_schema import (
+    WellnessRequest,
+    WellnessResponse
 )
 
 from app.services.session_generator import SessionGenerator
@@ -17,9 +17,9 @@ router = APIRouter(
     tags=["Session"]
 )
 
-@router.post("/generate", response_model=SessionResponse)
+@router.post("/generate", response_model=WellnessResponse)
 async def generate_session(
-    payload: SessionRequest,
+    payload: WellnessRequest,
     db: Session = Depends(get_db)
 ):
 

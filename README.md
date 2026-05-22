@@ -91,7 +91,7 @@ AI provider abstraction (Gemini/Ollama)
 | POST   | `/session/generate`  | Generate 5-minute wellness session |
 | GET    | `/tips/quick`        | Get quick wellness tips            |
 | GET    | `/history/{user_id}` | Fetch user session history         |
-| GET    | `/tips/quick         | Get tips based on mood             |
+| GET    | `/tips/quick         | Get tips based on mood of the user |
 
 
 Start PostgreSQL
@@ -122,3 +122,27 @@ CREATE TABLE mood_analysis (
     confidence FLOAT(10),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE tip_history (
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id VARCHAR(50),
+    mood VARCHAR(50),
+    category VARCHAR(50),
+    provider VARCHAR(50),
+    tip VARCHAR(1000),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+Your app is a genuine AI microservice architecture:
+
+FastAPI
+  ↓
+Router
+  ↓
+Service Layer
+  ↓
+LLM Provider Abstraction
+  ↓
+Gemini OR Ollama
+
+ollama run llama3.1:8b

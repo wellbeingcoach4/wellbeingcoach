@@ -1,4 +1,7 @@
 import random
+from app.core.config import settings
+from app.llm.cloud_service import GeminiService
+from app.llm.local_service import OllamaService
 
 
 class QuickTips:
@@ -54,14 +57,48 @@ class QuickTips:
         ]
     }
 
+    # @staticmethod
+    # def get_tip(mood: str):
+
+    #     mood = mood.lower()
+
+    #     tips = QuickTips.TIPS.get(
+    #         mood,
+    #         QuickTips.TIPS[mood] if mood in QuickTips.TIPS else QuickTips.TIPS["neutral"]
+    #     )
+
+    #     return random.choice(tips)
+    
     @staticmethod
     def get_tip(mood: str):
 
-        mood = mood.lower()
+        provider = settings.LLM_PROVIDER.lower()
 
-        tips = QuickTips.TIPS.get(
-            mood,
-            QuickTips.TIPS[mood] if mood in QuickTips.TIPS else QuickTips.TIPS["neutral"]
-        )
+        if provider == "gemini":
 
-        return random.choice(tips)
+            service = GeminiService()
+
+            tip = service.generate_tip(mood)
+
+        else:
+
+            service = OllamaService()
+
+            tip = service.generate_tip(mood)
+
+        return {
+            "mood": mood,
+            "category": QuickTips.get_category(mood),
+            "tip": tip
+        }
+
+    @staticmethod
+    def get_category(mood: str):
+        categories = {
+            "anxious": "calming",
+            "sad": "uplifting",
+            "stressed": "relaxation",
+            "neutral": "wellness"
+        }
+
+        return categories.get(mood.lower(), "general")

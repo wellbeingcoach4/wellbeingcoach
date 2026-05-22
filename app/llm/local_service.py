@@ -29,3 +29,16 @@ def get_local_response(prompt: str):
     )
 
     return response.choices[0].message.content
+
+class OllamaService:
+
+    def generate_tip(self, mood: str):
+
+        prompt = f"""
+        You are a mental wellness coach.
+        User mood: {mood}
+        Generate one short wellness tip.
+        """
+        response = get_local_response(prompt)
+        
+        return response

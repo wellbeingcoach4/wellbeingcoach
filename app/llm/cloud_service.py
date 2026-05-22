@@ -30,19 +30,23 @@ def get_cloud_response(prompt: str):
 
     return response.choices[0].message.content
 
+class GeminiService:
+    def __init__(self):
+        self.model = get_cloud_response
 
-def stream_cloud_response(prompt: str):
-    client = OpenAI(
-        api_key=os.getenv("GEMINI_API_KEY"),
-        base_url=os.getenv("GEMINI_BASE_URL")
-    )
 
-    stream = client.chat.completions.create(
-        model=os.getenv("GEMINI_MODEL"),
-        messages=[{"role": "user", "content": prompt}],
-        stream=True
-    )
+    def generate_tip(self, mood: str):
 
-    for chunk in stream:
-        if chunk.choices[0].delta.content:
-            yield chunk.choices[0].delta.content
+        prompt = f"""
+            You are a mental wellness coach.
+            User mood: {mood}
+            Generate:
+            - one short wellness tip
+            - under 30 words
+            - calming and supportive
+            """
+
+        response = self.model.get_cloud_response(
+            prompt
+        )
+        return response.text.strip()
